@@ -48,44 +48,36 @@ class Dealer(object):
         # One card of each game (player and dealer) will be displayed
         pass
 
+import random
 class Card_deck(object):
+  # Class objects
+  suit = ['diamonds', 'clubs','hearts','spades']
+  value = ['Ace', '2','3','4','5','6','7','8','9','10','Jack','Queen','King']
+  rank = {'2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9,
+              'Jack': 10, 'Queen':10, 'King':10, 'As':11}
 
-    # Class object
-    colour = ['of diamonds', 'of clubs','of hearts','of spades']
-    value = ['As', '2','3','4','5','6','7','8','9','10','Jack','Queen','King']
-    value_cards = {'2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9,
-                  'Jack': 10, 'Queen':10, 'King':10, 'As':11}
+  def __init__(self):
+    print "A deck of 52 cards has been created!"
+
+
+  def draw_cards(self):
+
+  # Pick 2 random cards for each player among 52 cards and display one card for each player
+    # Create global arguments
+    global card1_player
+    global card2_player
+    global card1_dealer
+    global card2_dealer
+    # Randomly select 4 cards in the deck and assign 2 cards for player and for dealer. Needs to find a way no to select the         same cards!
+    ranks = random.sample(Card_deck.rank, 4)
+    suits = random.sample(Card_deck.suit, 4)
+    card1_player = [ranks[0] + " of " +suits[0]]
+    card2_player = [ranks[1] + " of " +suits[1]]
+    card1_dealer = [ranks[2] + " of " +suits[2]]
+    card2_dealer = [ranks[3] + " of " +suits[3]]
+    print "Player has %s and another card" % random.choice((card1_player,card2_player))
+    print "Dealer has %s and another card" % random.choice((card1_dealer,card2_dealer))
+    return card1_player, card2_player, card1_dealer, card2_dealer
     
-    def __init__(self):
-        print "A deck of 52 cards has been created!"
-        
-        
-    def draw_cards(self):
-        
-        # Pick 2 random cards amongs the 52 and diplay them
-        global card1
-        card_name1 = random.choice(Card_deck.value,3)
-        card_shape1 = random.choice(Card_deck.colour)
-        card_name2 = random.choice(Card_deck.value)
-        card_shape2 = random.choice(Card_deck.colour)
-        card_name3 = random.choice(Card_deck.value)
-        card_shape3 = random.choice(Card_deck.colour)
-        card_name4 = random.choice(Card_deck.value)
-        card_shape4 = random.choice(Card_deck.colour)
-        card1 = [card_name1 +" "+ card_shape1]
-        card2 = [card_name2 +" "+ card_shape2]
-        card3 = [card_name3 +" "+ card_shape3]
-        card4 = [card_name4 +" "+ card_shape4]
-        
-        print "card1 is %s\ncard2 is %s\ncard3 is %s\ncard4 is %s" % (card1,card2,card3,card4)
-        #print "Card2 is %s" % card2
-        #print "Card2 is %s" % card2
-        return card1, card2, card3, card4
-    
-    def assign_val_card(self,card1):
-        self.card1 = card1
-        val_card = 0
-        card1 = draw_cards()
-        print "Card1 is %s" % card1
-        
+
 
